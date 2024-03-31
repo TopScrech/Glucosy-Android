@@ -52,6 +52,7 @@ public class BaseMessage extends MyByteBuffer {
 
     protected static String getTAG() {
         var fullClassName = Thread.currentThread().getStackTrace()[3].getClassName();
+
         return fullClassName.substring(fullClassName.lastIndexOf('.') + 1);
     }
 

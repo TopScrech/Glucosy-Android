@@ -143,8 +143,10 @@ static    public byte[] T4Updateencode(byte[] bytes,int offset,boolean firstFrag
             Log.d(TAG, "Tag lost (write)");
             return;
         }
+
 //        var packets = T4Update.builder().bytes(bytes).build().encodeForMtu(mlcMax);
         var packets = updateEncodeForMtu(bytes,mlcMax);
+
         for (var p : packets) {
             if (!transceiveOkay(p, "Error during packet write")) {
                 break;
@@ -167,6 +169,7 @@ static   private byte[] getT4read(int offset, int len) {
 
         int thisLength = length;
         int thisOffset = offset;
+        w
         while (thisLength > 0) {
             var thisRead = Math.min(thisLength, mtu);
             blist.add(getT4read(thisOffset,thisRead));
